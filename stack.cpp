@@ -12,23 +12,23 @@ Stack<T>::Stack(const typename Stack<T>::container_type& rhs)
 
 }
 template <typename T>
-Stack<T>::Stack(const typename Stack<T>::container_type&& rhs)
+Stack<T>::Stack(typename Stack<T>::container_type&& rhs)
     :   
-        m_stack{rhs}
+        m_stack{std::move(rhs)}
 {
 
 }
 template <typename T>
 Stack<T>::Stack(const Stack& rhs)
     :
-        m_stack {rhs.m_stack}
+        m_stack{rhs.m_stack}
 {
 
 }
 template <typename T>
-Stack<T>::Stack(const Stack&& rhs)
+Stack<T>::Stack(Stack&& rhs)
     :
-        m_stack {rhs.m_stack}
+        m_stack {std::move(rhs.m_stack)}
 {
 
 }
@@ -43,13 +43,13 @@ Stack<T>& Stack<T>::operator=(const Stack<T>& rhs)
     return *this;
 }
 template <typename T>
-Stack<T>& Stack<T>::operator=(const Stack<T>&& rhs)
+Stack<T>& Stack<T>::operator=(Stack<T>&& rhs)
 {
     if (this == &rhs)
     {
         return *this;
     }
-    m_stack = rhs.m_stack;
+    m_stack = std::move(rhs.m_stack);
     return *this;
 }
 template <typename T>
