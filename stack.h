@@ -1,7 +1,7 @@
 #ifndef STACK_H
 #define STACK_H
 #include <iostream>
-#include "../vector/vector.h"
+#include "vector.h"
 template <typename T>
 class Stack
 {
@@ -14,12 +14,12 @@ public:
 public:
     Stack() = default;
     explicit Stack(const container_type&);
-    explicit Stack(const container_type&&);
+    explicit Stack(container_type&&);
     Stack(const Stack&);
-    Stack(const Stack&&);
+    Stack(Stack&&);
     ~Stack();
     Stack<T>& operator=(const Stack<T>& rhs);
-    Stack<T>& operator=(const Stack<T>&& rhs);
+    Stack<T>& operator=(Stack<T>&& rhs);
     value_type top();
     bool empty();
     size_type size();
